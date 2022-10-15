@@ -8,6 +8,9 @@ call plug#end()
 " NERDTree keybindings
 nnoremap <C-f> :NERDTreeToggle<CR>
 
+" NERDTRee configs
+let NERDTreeShowHidden=1
+
 
 " NERDTree automations
 autocmd VimEnter * NERDTree | wincmd p
