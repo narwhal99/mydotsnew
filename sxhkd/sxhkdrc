@@ -23,8 +23,8 @@ super + alt + {q,r}
 	bspc {quit,wm -r}
 
 # close and kill
-alt + {_,shift + }q
-	bspc node -{c,k}
+alt + shift + q
+	bspc node -c
 
 # focus or move node by arrow 
 alt + {_,shift + } { Left, Down, Up, Right}
@@ -76,6 +76,9 @@ alt + control + { Left, Down, Up, Right }
 alt + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
+# lock screen
+super + l 
+	$HOME/.config/bspwm/lock_script.sh
 
 ################### Below not audited
 
