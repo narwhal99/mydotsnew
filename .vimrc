@@ -1,4 +1,5 @@
 set number
+set showcmd
 
 call plug#begin()
 	Plug 'preservim/nerdtree'
