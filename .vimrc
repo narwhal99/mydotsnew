@@ -3,6 +3,7 @@ set showcmd
 
 call plug#begin()
 	Plug 'preservim/nerdtree'
+	Plug 'dense-analysis/ale'
 call plug#end()
 
 
