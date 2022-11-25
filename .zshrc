@@ -126,3 +126,6 @@ function code() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
