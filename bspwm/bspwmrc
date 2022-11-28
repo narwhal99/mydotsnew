@@ -10,6 +10,8 @@ nitrogen --restore &
 
 picom &
 
+xrandr --output DP-0 --mode 2560x1440 --rate 144 --left-of HDMI-0
+
 # remove cursor "x"
 xsetroot -cursor_name left_ptr &
 #if [[ $(xrandr -q | grep "HDMI-0 connected") ]]; then
