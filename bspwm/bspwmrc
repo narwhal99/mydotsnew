@@ -10,16 +10,17 @@ nitrogen --restore &
 
 picom &
 
+nm-applet & 
 # remove cursor "x"
 xsetroot -cursor_name left_ptr &
 #if [[ $(xrandr -q | grep "HDMI-0 connected") ]]; then
 #	xrandr --output DP-0 --primary --mode "2560x1440" -r 143.86 --left-of HDMI-0
 #fi
 
-bspc wm -O DP-0 HDMI-0 
-bspc monitor DP-0 -d 1 2 3 4
-bspc monitor HDMI-0 -d 5 6 7 8
-
+#bspc wm -O DP-0 HDMI-0 
+#bspc monitor DP-0 -d 1 2 3 4
+#bspc monitor HDMI-0 -d 5 6 7 8
+bspc monitor eDP-1 -d  1 2 3 4 5 6 7 8 9
 
 
 bspc config border_width         2
@@ -36,4 +37,4 @@ bspc rule -a google-chrome-dev private=on dekstop=2
 #bspc rule -a Gimp desktop='^8' state=floating follow=on
 #bspc rule -a mplayer2 state=floating
 #bspc rule -a Kupfer.py focus=on
-#bspc rule -a Screenkey manage=off
+#bspc rule -a Screenka manage=off
