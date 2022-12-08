@@ -8,7 +8,7 @@ pgrep -x sxhkd > /dev/null | sxhkd &
 
 nitrogen --restore &
 
-picom &
+#picom &
 
 nm-applet & 
 # remove cursor "x"
@@ -17,10 +17,10 @@ xsetroot -cursor_name left_ptr &
 #	xrandr --output DP-0 --primary --mode "2560x1440" -r 143.86 --left-of HDMI-0
 #fi
 
-#bspc wm -O DP-0 HDMI-0 
-#bspc monitor DP-0 -d 1 2 3 4
-#bspc monitor HDMI-0 -d 5 6 7 8
-bspc monitor eDP-1 -d  1 2 3 4 5 6 7 8 9
+bspc wm -O eDP-1 HDMI-1 
+bspc monitor eDP-1 -d 1 2 3 4
+bspc monitor HDMI-1 -d 5 6 7 8
+#bspc monitor eDP-1 -d  1 2 3 4 5 6 7 8 9
 
 
 bspc config border_width         2
