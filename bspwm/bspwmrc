@@ -8,7 +8,7 @@ pgrep -x sxhkd > /dev/null | sxhkd &
 
 nitrogen --restore &
 
-#picom &
+picom &
 
 nm-applet & 
 # remove cursor "x"
