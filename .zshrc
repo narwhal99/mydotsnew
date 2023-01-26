@@ -125,7 +125,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias code="flatpak run com.visualstudio.code"
 
-function code() {
-	(flatpak run com.visualstudio.code $*)
-}
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
 
+export PATH=~/erlang/otp/23.2.3/bin:$PATH

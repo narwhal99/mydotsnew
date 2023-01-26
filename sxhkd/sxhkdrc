@@ -80,6 +80,18 @@ alt + {p,b,comma,period}
 super + l 
 	$HOME/.config/bspwm/lock_script.sh
 
+# screenshot
+#Area clipboard
+super + shift + s
+	maim --select | xclip -selection clipboard -t image/png
+
+#Area file 
+alt + Print
+	maim --select "/home/$USER/Pictures/Screenshots/$(date)"
+
+#Full screenshot
+Print
+	maim "/home/$USER/Pictures/Screenshots/$(date)"
 ################### Below not audited
 
 ## ???
