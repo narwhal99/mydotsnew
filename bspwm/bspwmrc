@@ -14,15 +14,34 @@ nm-applet &
 # remove cursor "x"
 xsetroot -cursor_name left_ptr &
 
-if [[ $(xrandr -q | grep "HDMI-1 connected") ]]; then
-	bspc wm -O eDP-1 HDMI-1 
-	bspc monitor eDP-1 -d 1 2 3 4
-	bspc monitor HDMI-1 -d 5 6 7 8
-else
-	bspc wm -O eDP-1
-	bspc monitor eDP-1 -d  1 2 3 4 5 6 7 8 9
-fi
+monitor_remove() {
+	# Add default temp desktop because a minimum of one desktop is required per monitor
+	bspc monitor "$EXTERNAL_MONITOR" -a Desktop
 
+  # Move all desktops except the last default desktop to internal monitor
+  for desktop in $(bspc query -D -m "$EXTERNAL_MONITOR");	do
+	  bspc desktop "$desktop" --to-monitor "$INTERNAL_MONITOR"
+  done
+
+  # delete default desktops
+  bspc desktop Desktop --remove
+
+  # reorder desktops
+  bspc monitor "$INTERNAL_MONITOR" -o 1 2 3 4 5 6 7 8 9
+}
+
+INTERNAL_MONITOR="eDP-1"
+EXTERNAL_MONITOR="HDMI-1"
+
+if [[ $(xrandr -q | grep "${EXTERNAL_MONITOR} connected") ]]; then
+	bspc wm -O ${INTERNAL_MONITOR} ${EXTERNAL_MONITOR} 
+	bspc monitor ${INTERNAL_MONITOR} -d 1 2 3 4 5
+	bspc monitor ${EXTERNAL_MONITOR} -d 6 7 8 9
+else
+	bspc wm -O ${INTERNAL_MONITOR} 
+	bspc monitor ${INTERNAL_MONITOR} -d  1 2 3 4 5 6 7 8 9
+	monitor_remove
+fi
 
 
 bspc config border_width         2
