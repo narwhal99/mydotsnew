@@ -4,7 +4,7 @@
 
 # terminal emulator
 alt + Return
-	kitty	
+	gnome-terminal	
 
 # program launcher
 alt + d
@@ -92,6 +92,9 @@ alt + Print
 #Full screenshot
 Print
 	maim "/home/$USER/Pictures/Screenshots/$(date)"
+
+XF86MonBrightness{Up,Down}  
+  brightnessctl s 10{+,-} 
 ################### Below not audited
 
 ## ???
