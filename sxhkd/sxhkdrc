@@ -87,11 +87,17 @@ super + shift + s
 
 #Area file 
 alt + Print
-	maim --select "/home/$USER/Pictures/Screenshots/$(date)"
+	maim --select "/home/$USER/Pictures/Screenshots/$(date).png"
 
 #Full screenshot
 Print
 	maim "/home/$USER/Pictures/Screenshots/$(date)"
+
+
+#Copy history
+super + v
+    rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+
 
 XF86MonBrightness{Up,Down}  
   brightnessctl s 10{+,-} 
