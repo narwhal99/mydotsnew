@@ -4,11 +4,13 @@
 
 $HOME/.config/polybar/forest/launch.sh &
 
+flameshot & 
+
 pgrep -x sxhkd > /dev/null | sxhkd &
 
 nitrogen --restore &
 
-dunst -config $HOME/.config/dunst/dunstrc_nord &
+dunst -config $HOME/.config/dunst/dunstrc_test04 &
 
 picom &
 
@@ -45,7 +47,6 @@ EXTERNAL_MONITOR=$(xrandr --listactivemonitors | awk 'NR==3{print $4}')
 
 [ -z "$EXTERNAL_MONITOR" ] && EXTERNAL_MONITOR=HDMI-1
 
-echo $EXTERNAL_MONITOR
 #INTERNAL_MONITOR="HDMI-1"
 #EXTERNAL_MONITOR="eDP-1"
 #INTERNAL_MONITOR="eDP-1"
@@ -53,8 +54,8 @@ echo $EXTERNAL_MONITOR
 
 if [[ $(xrandr --listactivemonitors | grep "${EXTERNAL_MONITOR}") ]]; then
 	bspc wm -O ${INTERNAL_MONITOR} ${EXTERNAL_MONITOR} 
-	bspc monitor ${INTERNAL_MONITOR} -d 1 2 3 4 5
-	bspc monitor ${EXTERNAL_MONITOR} -d 6 7 8 9
+	bspc monitor ${INTERNAL_MONITOR} -d 1 2 3 4 
+	bspc monitor ${EXTERNAL_MONITOR} -d 5 6 7 8 9  
 else
 	bspc wm -O ${INTERNAL_MONITOR} 
 	bspc monitor ${INTERNAL_MONITOR} -d  1 2 3 4 5 6 7 8 9
@@ -62,13 +63,35 @@ else
 fi
 
 
-bspc config border_width         2
-bspc config window_gap          12
 
-bspc config split_ratio          0.52
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
-bspc config focused_border_color "#E84F4F"
+#bspc config split_ratio          0.52
+#bspc config borderless_monocle   true
+#bspc config gapless_monocle      true
+
+# --- Appearance --- #
+
+bspc config window_gap          12
+bspc config border_width         2
+bspc config pointer_motion_interval    30
+
+bspc config normal_border_color    "#7c6f64"
+bspc config focused_border_color   "#fcb788"
+bspc config active-border_color    "#a06943"
+
+
+
+# --- Chrome --- #
+#bspc rule -a Google-chrome                      desktop='^2'            follow=on  state=tiled 
+bspc rule -a Google-chrome:*:'Open File'                                follow=on  state=floating rectangle=950x500+0+0
+bspc rule -a Google-chrome:*:'Open Files'                               follow=on  state=floating rectangle=950x500+0+0
+bspc rule -a Google-chrome:*:'Save File'                                follow=on  state=floating rectangle=950x500+0+0
+
+ 
+# --- Teams --- #
+#bspc rule -a microsoft teams - preview desktop='^5'
+
+# --- Other apps --- #
+bspc rule -a Pavucontrol                                     center=on  follow=on  state=floating rectangle=1600x850+0+0 
 
 #bspc rule -a *:chrome desktop='^2'
 #bspc rule -a google-chrome-unstable private=on dekstop=2

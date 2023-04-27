@@ -1,3 +1,36 @@
+syn on
+color desert
+set magic
+set paste
+" }}}
+" Space es tab {{{
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set cursorline
+filetype indent on
+" }}}
+" UI beallitasok {{{
+set wildmenu
+set lazyredraw
+set showmatch
+
+set incsearch
+set hlsearch
+" }}}
+" Foldolas {{{
+set foldenable
+set foldlevelstart=10
+set foldnestmax=10
+set foldmethod=indent
+" }}}
+" Shortcutok {{{
+nnoremap <space> za
+" }}}
+
+
+" my settings below "
 set number
 set showcmd
 

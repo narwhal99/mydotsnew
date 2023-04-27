@@ -130,3 +130,4 @@ alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
 export PATH=~/erlang/otp/23.2.3/bin:$PATH
+

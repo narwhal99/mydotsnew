@@ -2,12 +2,15 @@
 # wm independent hotkeys
 #
 
+super + shift + Return
+    bspc rule -a \* -o follow=on state=floating && gnome-terminal 
+
 # terminal emulator
-alt + Return
+super + Return
 	gnome-terminal	
 
 # program launcher
-alt + d
+super + space 
 	rofi -show drun
 
 # make sxhkd reload its configuration files:
@@ -18,62 +21,63 @@ super + Escape
 # bspwm hotkeys
 #
 
+
 # quit/restart bspwm
-super + alt + {q,r}
+super + alt + {Escape,r}
 	bspc {quit,wm -r}
 
 # close and kill
-alt + shift + q
+super + shift + q
 	bspc node -c
 
 # focus or move node by arrow 
-alt + {_,shift + } { Left, Down, Up, Right}
+super + {_,shift + } { Left, Down, Up, Right}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus or move node by hjkl 
-alt + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
+#super + {_,shift + }{h,j,k,l}
+#	bspc node -{f,s} {west,south,north,east}
 
 # swap the current node and the biggest node
-alt + g
+super + g
 	bspc node -s biggest
 
 # set the window state
-alt + {t,shift + t,s,f}
+super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,\~floating,\~fullscreen}
 
 # focus or send to the given desktop
-alt + {_,shift + }{1-9,0}
+super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
 # preselect the direction by arrow
-alt + shift + ctrl + { Left, Down, Up, Right}
+super + shift + ctrl + { Left, Down, Up, Right}
 	bspc node -p {west,south,north,east}
 
 # preselect the direction by hjkl
-alt + shift + ctrl + {h,j,k,l}
+super + shift + ctrl + {h,j,k,l}
 	bspc node -p {west,south,north,east}
 
 # cancel the preselection for the focused node
-alt + shift  + ctrl + q
+super + shift  + ctrl + q
 	bspc node -p cancel
 
 # resize by hjkl
-alt + control + { h, j, k, l }
+super + control + { h, j, k, l }
 	bspc node -z {left -20 0 || bspc node -z right -20 0, \
 	bottom 0 20 || bspc node -z top 0 20,\
 	top 0 -20 || bspc node -z bottom 0 -20,\
 	right 20 0 || bspc node -z left 20 0}
 
 # resize by arrow
-alt + control + { Left, Down, Up, Right }
+super + control + { Left, Down, Up, Right }
 	bspc node -z {left -20 0 || bspc node -z right -20 0, \
 	bottom 0 20 || bspc node -z top 0 20,\
 	top 0 -20 || bspc node -z bottom 0 -20,\
 	right 20 0 || bspc node -z left 20 0}
 
 # focus the node for the given path jump
-alt + {p,b,comma,period}
+super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # lock screen
@@ -82,25 +86,30 @@ super + l
 
 # screenshot
 #Area clipboard
-super + shift + s
-	maim --select | xclip -selection clipboard -t image/png
+#super + shift + s
+#	maim --select | xclip -selection clipboard -t image/png
 
 #Area file 
-alt + Print
-	maim --select "/home/$USER/Pictures/Screenshots/$(date).png"
+#alt + Print
+#	maim --select "/home/$USER/Pictures/Screenshots/$(date).png"
 
 #Full screenshot
-Print
-	maim "/home/$USER/Pictures/Screenshots/$(date)"
+#Print
+#	maim "/home/$USER/Pictures/Screenshots/$(date)"
 
 
 #Copy history
 super + v
     rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
+# rotate
+super + bracket{left,right}
+	bspc node @parent --rotate {270,90}
+
 
 XF86MonBrightness{Up,Down}  
-  brightnessctl s 10{+,-} 
+  brightnessctl s 10{+,-}
+
 ################### Below not audited
 
 ## ???
